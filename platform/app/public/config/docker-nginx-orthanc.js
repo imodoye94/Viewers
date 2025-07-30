@@ -1,56 +1,76 @@
 /** @type {AppTypes.Config} */
 window.config = {
-  routerBasename: null,
-  showStudyList: true,
+  routerBasename: '/',
   extensions: [],
   modes: [],
-  // below flag is for performance reasons, but it might not work for all servers
+  showStudyList: true,
+  maxNumberOfWebWorkers: 3,
   showWarningMessageForCrossOrigin: true,
   showCPUFallbackMessage: true,
   showLoadingIndicator: true,
-  experimentalStudyBrowserSort: false,
+  useNorm16Texture: true,
   strictZSpacingForVolumeViewport: true,
+  investigationalUseDialog: {
+	option: 'never'
+  },
   studyPrefetcher: {
     enabled: true,
     displaySetsCount: 2,
     maxNumPrefetchRequests: 10,
     order: 'closest',
   },
-  defaultDataSourceName: 'dicomweb',
+  maxNumRequests: {
+    interaction: 100,
+    thumbnail: 75,
+    prefetch: 10,
+  },
   dataSources: [
     {
       namespace: '@ohif/extension-default.dataSourcesModule.dicomweb',
       sourceName: 'dicomweb',
       configuration: {
-        friendlyName: 'Orthanc Server',
-        name: 'Orthanc',
-        wadoUriRoot: '/wado',
-        qidoRoot: '/pacs/dicom-web',
-        wadoRoot: '/pacs/dicom-web',
-        qidoSupportsIncludeField: false,
+        friendlyName: 'orthanc',
+        name: 'orthanc',
+        wadoUriRoot: "/orthanc/wado",
+        qidoRoot: "/orthanc/dicom-web",
+        wadoRoot: "/orthanc/dicom-web",
+        qidoSupportsIncludeField: true,
+        supportsReject: true,
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
-        dicomUploadEnabled: true,
-        omitQuotationForMultipartRequest: true,
-      },
-    },
-    {
-      namespace: '@ohif/extension-default.dataSourcesModule.dicomjson',
-      sourceName: 'dicomjson',
-      configuration: {
-        friendlyName: 'dicom json',
-        name: 'json',
-      },
-    },
-    {
-      namespace: '@ohif/extension-default.dataSourcesModule.dicomlocal',
-      sourceName: 'dicomlocal',
-      configuration: {
-        friendlyName: 'dicom local',
+        enableStudyLazyLoad: true,
+        supportsFuzzyMatching: true,
+        supportsWildcard: true,
+        singlepart: "bulkdata,video,pdf",
+        dicomUploadEnabled: true
       },
     },
   ],
   httpErrorHandler: error => {
     console.warn(`HTTP Error Handler (status: ${error.status})`, error);
   },
+ whiteLabeling: {
+   createLogoComponentFn: function (React) {
+ 	return React.createElement(
+ 	  "a",
+ 	  {
+		target: "_blank", // Opens in a new tab
+		rel: "noopener noreferrer", // Improves security when opening new tabs
+		className: "header-brand",
+		href: "https://mediverse.ai", // URL for the link
+	  },
+	  React.createElement("img", {
+		src: "./logo.png",
+		style: {
+		  display: "block",
+		  backgroundSize: "contain",
+		  backgroundRepeat: "no-repeat",
+		  width: "15%",
+		  height: "95%",
+		},
+	  }),
+	);
+  },
+ },
+  defaultDataSourceName: 'dicomweb',
 };
