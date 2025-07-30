@@ -1,8 +1,8 @@
 {
-  "Name": "Orthanc inside Docker",
+  "Name": "M E D I V E R S E",
   "StorageDirectory": "/var/lib/orthanc/db",
   "IndexDirectory": "/var/lib/orthanc/db",
-  "StorageCompression": false,
+  "StorageCompression": true,
   "MaximumStorageSize": 0,
   "MaximumPatientCount": 0,
   "LuaScripts": [],
@@ -13,7 +13,7 @@
   "HttpDescribeErrors": true,
   "HttpCompressionEnabled": true,
   "DicomServerEnabled": true,
-  "DicomAet": "ORTHANC",
+  "DicomAet": "MEDIVERSE",
   "DicomCheckCalledAet": false,
   "DicomPort": 4242,
   "DefaultEncoding": "Latin1",
@@ -32,7 +32,7 @@
   "SslCertificate": "certificate.pem",
   "AuthenticationEnabled": false,
   "RegisteredUsers": {
-    "test": "test"
+    "asdgf4sdgr1234sdf": "H12assfdgsQ132ersf@dfsdgwesfbghgfretyhfgncvg345645SD@sd425r23qefsd"
   },
   "DicomModalities": {},
   "DicomModalitiesInDatabase": false,
