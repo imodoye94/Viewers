@@ -49,6 +49,28 @@ window.config = {
   httpErrorHandler: error => {
     console.warn(`HTTP Error Handler (status: ${error.status})`, error);
   },
- whiteLabeling: {},
+ whiteLabeling: {
+   createLogoComponentFn: function (React) {
+ 	return React.createElement(
+ 	  "a",
+ 	  {
+		target: "_blank", // Opens in a new tab
+		rel: "noopener noreferrer", // Improves security when opening new tabs
+		className: "header-brand",
+		href: "https://mediverse.ai", // URL for the link
+	  },
+	  React.createElement("img", {
+		src: "./logo.png",
+		style: {
+		  display: "block",
+		  backgroundSize: "contain",
+		  backgroundRepeat: "no-repeat",
+		  width: "15%",
+		  height: "95%",
+		},
+	  }),
+	);
+  },
+ },
   defaultDataSourceName: 'dicomweb',
 };
