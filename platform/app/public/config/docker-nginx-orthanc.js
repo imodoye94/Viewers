@@ -60,7 +60,7 @@ window.config = {
 		href: "https://mediverse.ai", // URL for the link
 	  },
 	  React.createElement("img", {
-		src: "./logo.png",
+		src: "./logo.svg",
 		style: {
 		  display: "block",
 		  backgroundSize: "contain",
