@@ -7,9 +7,9 @@ services:
   ohif_viewer:
     build:
       # Project root
-      context: ./../../../../
+      context: ../..
       # Relative to context
-      dockerfile: ./platform/app/.recipes/Nginx-Orthanc/dockerfile
+      dockerfile: .recipes/Nginx-Orthanc/dockerfile
     image: webapp:latest
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf
